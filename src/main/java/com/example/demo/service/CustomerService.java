@@ -1,21 +1,22 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Customer;
-import com.example.demo.repository.gateway.CustomerGateway;
+import com.example.demo.repository.CustomerRepository;
+import com.example.demo.repository.entity.Customer;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService {
 
-    private final CustomerGateway customerGateway;
+    private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerGateway customerGateway) {
-        this.customerGateway = customerGateway;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
+
 
     public void saveCustomer(Customer customer){
         validateCustomer(customer);
-        customerGateway.save(customer);
+        customerRepository.saveAndFlush(customer);
     }
 
     public void validateCustomer(Customer customer){
