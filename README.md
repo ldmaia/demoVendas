@@ -1,2 +1,1 @@
-# demoVendas
-DemoVendas
+Sistema de vendas
